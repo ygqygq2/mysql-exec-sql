@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+cd /tmp/
 
 MYSQL_HOST=$MYSQL_HOST
 MYSQL_PORT=${MYSQL_PORT:-3306}
@@ -21,8 +22,14 @@ function check_conn() {
 # exec sql files
 function exec_sql_file() {
     until [ -z "$1" ]; do
-        mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWD -P$MYSQL_PORT $MYSQL_DB < $1
-        [ $? -eq 0 ] && log "Exec [$1] succeed." || log "Exec [$1] failed."
+        if echo $1 |egrep 'http[s]{0,1}://' >/dev/null 2>&1; then
+            sql_file=$(basename $1)
+            curl $1 -o $sql_file
+        else
+            sql_file=$1
+        fi
+        
+        mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWD -P$MYSQL_PORT $MYSQL_DB < $sql_file || true
         shift
     done
 }
