@@ -44,5 +44,5 @@ fi
 
 exec_sql_file $sql_files
 
-log "Used $SECONDS"
+log "Used $SECONDS seconds."
 
