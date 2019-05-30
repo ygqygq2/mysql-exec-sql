@@ -29,7 +29,8 @@ function exec_sql_file() {
             sql_file=$1
         fi
         
-        mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWD -P$MYSQL_PORT $MYSQL_DB < $sql_file || true
+        mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWD -P$MYSQL_PORT $MYSQL_DB < $sql_file > /dev/null 2>&1 \
+            || true
         shift
     done
 }
