@@ -1,6 +1,6 @@
 # mysql-exec-sql
 
-![Docker Automated build](https://img.shields.io/docker/automated/ygqygq2/mysql-exec-sql.svg) ![Docker Build Status](https://img.shields.io/docker/build/ygqygq2/mysql-exec-sql.svg) ![Docker Stars](https://img.shields.io/docker/stars/ygqygq2/mysql-exec-sql.svg) ![Docker Pulls](https://img.shields.io/docker/pulls/ygqygq2/mysql-exec-sql.svg)
+![Docker Automated build](https://img.shields.io/docker/cloud/automated/ygqygq2/mysql-exec-sql.svg) ![Docker Build Status](https://img.shields.io/docker/cloud/build/ygqygq2/mysql-exec-sql.svg) ![Docker Stars](https://img.shields.io/docker/stars/ygqygq2/mysql-exec-sql.svg) ![Docker Pulls](https://img.shields.io/docker/pulls/ygqygq2/mysql-exec-sql.svg)
 
 # Supported tags and respective `Dockerfile` links
 
