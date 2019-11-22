@@ -7,7 +7,7 @@ MYSQL_PORT=${MYSQL_PORT:-3306}
 MYSQL_USER=$MYSQL_USER
 MYSQL_PASSWD=$MYSQL_PASSWD
 MYSQL_DB=$MYSQL_DB
-sql_files=$@
+SQL_FILES=$SQL_FILES
 
 function log() {
     echo "$@"
@@ -39,7 +39,7 @@ function usage() {
     echo "sh $0 sql_files"
 }
 
-if [ -z "$sql_files" ]; then
+if [ -z "$SQL_FILES" ]; then
     usage
     exit 55
 fi
@@ -50,7 +50,10 @@ if [ $? -ne 0 ]; then
     exit 10
 fi
 
-exec_sql_file $sql_files
+read -r -a s_files <<< "$(tr ',;' ' ' <<< "$SQL_FILES")"
+for s_f in ${s_files[@]}; do
+    exec_sql_file $s_f
+done
 
 log "Used $SECONDS seconds."
 
